@@ -131,7 +131,7 @@ SIM800L.toggleNetLightIndicateGprsStatus = function(mode, callback){
 }
 
 /* -- GENERAL --*/
-// handle opening or closing the Net light
+// handle opening or closing the microphone
 // R: modes --> 0 => re-open the mike, 1 => close it
 SIM800L.toggleMike = function(mode, callback){
   at.cmd("AT+CEXTERNTONE="+mode+"\r\n", 1000, function(d) {
