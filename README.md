@@ -26,6 +26,8 @@ Boot failed, reset ...
 ```
 To solve that, power the module from +5V  instead of +3.3V, & just use a 1N4007 diode ( 0.7 drop ) to be "right" for the [3.7V..4.2V] accepted range for the module input voltage
 
+For the ```OVER-VOLTAGE WARNNING```, I don't know yet why it sometimes happen, but it seems it's when the module is up for a long time ( or maybe my diode is free runnig ? :/ )
+
 ## using it with a laptop
 Any script/program 'll do, starting with the following cmd, whcih 'll start an interactive session using "screen"
 ```screen /dev/ttyUSB0 115200```
