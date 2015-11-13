@@ -44,3 +44,20 @@ For the Espruino ( uC with an onboard javascript interpreter ), the following li
 [AT](http://www.espruino.com/AT)  
 [AT.js](http://www.espruino.com/modules/AT.js)
 [USART](http://www.espruino.com/USART)
+
+
+## useful AT cmds
+- init the auto-bauder: ```AT```
+- get module name & version: ```ATI```
+- turn on verbose errors: ```ATI+CMEE=2```
+- get SIM card number: ```AT+CCID```
+- check that we're connected to a network: ```AT+COPS?```
+- check signal strength: ```AT+CSQ```
+- check battery state: ```AT+CBC```
+- for locked SIM cards, to enter PIN before connecting to a network: ```AT+PIN=<pin_code>```
+- send a SMS: 
+  * set the module to TEXT mode ( not PDU/data ) to be able to enter a message: ```AT+CMGF=1```
+  * send a text message ( 'll return a '>' prompt, type/send Ctrl-Z on an empty line to send ): ```AT+CMGS="<the_number>"```
+- place a call:
+  * to init a call: ```ATD<the_number>;```
+  * once chatting, to hang up: ```ATH```
