@@ -10,6 +10,8 @@ setTimeout(function(){
 var dummyNum = "0681382722";
 var SIM800L = {};
 
+
+
 /* -- TEXT -- */
 // handle sending a SMS
 SIM800L.sendSMS = function(number, message, callback){
@@ -19,7 +21,7 @@ SIM800L.sendSMS = function(number, message, callback){
       at.cmd('AT+CMGS="'+number+'"\r\n', 1000, function(m) {
         if (m===undefined) ; // we timed out!
         if (m!==undefined){
-          at.write(message+"\r\n", 0x1A);
+          at.write([message+"\r\n", 0x1A]);
           // play audio: SMS sent
           if(callback) callback({type: 'SMS', message: message, status: 'sent'});
         }
@@ -28,10 +30,18 @@ SIM800L.sendSMS = function(number, message, callback){
   });
 }
 
-// handle receiving a SMS ( +CMTI: "SM",<n> )
-SIM800L.receiveSMS = function(callback(data)){
+// handle receiving a SMS ( when a message is received --> +CMTI: "SM",<n> )
+// R: get last/<n> message received --> at.write('AT+CMGR=1/<n>\r\n');
+// R: calling the above TWICE marks it as "read" ( hum .. would it be possible that it's copied by fais ? .. )
+// R: get all messages received --> at.write('AT+CMGL=ALL\r\n');
+// R: delete a message --> AT+CMGD=<n>
+// R: delete all messages --> AT+CMGDA="DEL <chunk> ( chunks: READ,UNREAD,SENT,UNSENT,INBOX,ALL) in text mode
+SIM800L.receiveSMS = function(callback{
   
 }
+
+
+
 
 /* -- VOICE --*/
 // handle initiating a call
@@ -43,16 +53,90 @@ SIM800L.placeCall = function(number, callback){
   });
 }
 
-// handle receiving a call
-SIM800L.receiveCall = function(callback(data)){
-  
+// handle receiving a call ( when a call is received --> RING )
+// R: if module detects DTMF, URC 'll be reported via serial port --> ATD<the_num>; ==> +DTMF
+// R: enable DTMF detection --> AT+DDET=1
+// R: receive incoming call --> ATA
+// R: when a call is aborted ( on the remote side --> NO CARRIER )
+// R: to hangup --> ATH
+SIM800L.receiveCall = function(callback){
+  at.registerLine("RING", function(){ 
+    callback({type: 'Call', status: 'ringing'}); } 
+  });
+}
+SIM800L.endCall = function(callback){
+  at.registerLine("NO CARRIER", function(){ 
+    callback({type: 'Call', status: 'ended'}); } 
+  });
 }
 
+
 // handle hanging up
-SIM800L.hangupCall = function(){
+SIM800L.hangupCall = function(callback){
   at.cmd("ATH\r\n", 1000, function(d) {
     if (d===undefined) ; // we timed out!
     // play audio: hangup confirmed
     if(callback) callback({type: 'Call', status: 'hangup'});
   });
 }
+
+
+// handle rejecting calls
+// R: modes --> 0 => Enable incoming, 1 => forbid incoming, 2 => for incoming voice calls but enable CSD calls
+SIM800L.rejectCalls = function(mode, callback){
+  at.cmd("AT+GSMBUSY="+mode+"\r\n", 1000, function(d) {
+    if (d===undefined) ; // we timed out!
+    // play audio: hangup confirmed
+    if(callback) callback({type: 'Call', status: 'hangup'});
+  });
+}
+
+
+// handle using or not the buzzer sound for incoming calls
+// R: modes --> 0 => don't use buzzer sound as incoming call ring, 1 => use it as ..
+SIM800L.buzzerRing = function(mode, callback){
+  at.cmd("AT+CBUZZERRING="+mode+"\r\n", 1000, function(d) {
+    if (d===undefined) ; // we timed out!
+    // play audio: hangup confirmed
+    if(callback) callback({type: 'Call', status: 'hangup'});
+  });
+}
+
+
+// handle toggling the Net light
+// R: modes --> 0 => close the Net LED, 1 => open it to shining
+SIM800L.toggleNetLight = function(mode, callback){
+  at.cmd("AT+CNETLIGHT="+mode+"\r\n", 1000, function(d) {
+    if (d===undefined) ; // we timed out!
+    // play audio: hangup confirmed
+    if(callback) callback({type: 'Call', status: 'hangup'});
+  });
+}
+
+
+// handle using the Net light to indicate the GPRS status
+// R: modes --> 0 => disable, 1 => enable
+// if enabled, it's forced to enter 64msON/"00msOFF blinking in GPRS data transmission, 
+// otherwise its state is not restricted
+SIM800L.toggleNetLightIndicateGprsStatus = function(mode, callback){
+  at.cmd("AT+CSGS="+mode+"\r\n", 1000, function(d) {
+    if (d===undefined) ; // we timed out!
+    // play audio: hangup confirmed
+    if(callback) callback({type: 'Call', status: 'hangup'});
+  });
+}
+
+/* -- GENERAL --*/
+// handle opening or closing the Net light
+// R: modes --> 0 => re-open the mike, 1 => close it
+SIM800L.toggleMike = function(mode, callback){
+  at.cmd("AT+CEXTERNTONE="+mode+"\r\n", 1000, function(d) {
+    if (d===undefined) ; // we timed out!
+    // play audio: hangup confirmed
+    if(callback) callback({type: 'Call', status: 'hangup'});
+  });
+}
+/* sadly, the SIM800L is said to have no TTS capabilities :/ .. ( what about SIM800H or SIM900A ? )
+SIM800L.TTS = {};
+SIM800L.TTS.textToSpeech = function(text, callback){}
+*/
