@@ -66,9 +66,9 @@ For the Espruino ( uC with an onboard javascript interpreter ), the following li
   * specify the correct DCS ( Data Coding Scheme ) for Unicode messages ( 0X08 ):  
     R: check ```<cmd>=?```, current values ```<cmd>?```, set ```<cmd>=..```  
     We have to change the last parameter of ```AT+CSMP?``` ( ```17,168,0,0``` ) to 8:
-    ```AT+CSMP=17,168,0,8```
-  * send unicode message ( 'll return a '>' prompt, type/send Ctrl-Z on an empty line to send ): ```AT+CMGS="<the_number>"```
-  * now, we just have to write some code to convert a unicode glyph to a hex string
+    ```AT+CSMP=17,168,0,8```  
+  * send unicode message ( 'll return a '>' prompt, type/send Ctrl-Z on an empty line to send ): ```AT+CMGS="<the_number>"```  
+  * now, we just have to write some code to convert a unicode glyph to a hex string  
 - place a call:
   * to init a call: ```ATD<the_number>;```
   * once chatting, to hang up: ```ATH```
