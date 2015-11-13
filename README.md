@@ -1,6 +1,10 @@
 # SIM800L
 Little repo containing code &amp; docs for the SIM800L module
 
+#### API-like helpers [ in other words, wannabe-module code .. ;p ]
+[wipCode API](https://github.com/stephaneAG/SIM800L/blob/master/wipCode.md)  
+[wipCode JS](https://github.com/stephaneAG/SIM800L/blob/master/wipCode.js)  
+
 <img src="http://stephaneadamgarnier.com/SIM800L/SIM800L_pinouts.jpg" width="100%">
 <img src="http://stephaneadamgarnier.com/SIM800L/SIM800L_connections.jpg" width="100%">
 
