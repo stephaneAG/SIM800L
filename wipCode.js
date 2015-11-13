@@ -22,8 +22,7 @@ SIM800L.sendSMS = function(number, message, callback){
         if (m===undefined) ; // we timed out!
         if (m!==undefined){
           at.write([message+"\r\n", 0x1A]);
-          // play audio: SMS sent
-          if(callback) callback({type: 'SMS', message: message, status: 'sent'});
+          if(callback) callback({type: 'SMS', message: message, status: 'sent'}); // ex: play audio "SMS sent"
         }
       });
     }
@@ -31,16 +30,27 @@ SIM800L.sendSMS = function(number, message, callback){
 }
 
 // handle receiving a SMS ( when a message is received --> +CMTI: "SM",<n> )
-// R: get last/<n> message received --> at.write('AT+CMGR=1/<n>\r\n');
+// R: get last/<n> message received --> AT+CMGR=1/<n>
 // R: calling the above TWICE marks it as "read" ( hum .. would it be possible that it's copied by fais ? .. )
-// R: get all messages received --> at.write('AT+CMGL=ALL\r\n');
+// R: get all messages received --> AT+CMGL="ALL"
 // R: delete a message --> AT+CMGD=<n>
 // R: delete all messages --> AT+CMGDA="DEL <chunk> ( chunks: READ,UNREAD,SENT,UNSENT,INBOX,ALL) in text mode
-SIM800L.receiveSMS = function(callback{
-  
+SIM800L.receiveSMS = function(callback){
+  // on [get last] message received
+  // pass a function that handles "stuff" when a message is received ( ex: save it to SD card & remove it from SIM )
+  if(callback) callback({type: 'SMS', message: message, status: 'received'});  // ex: play audio "SMS received"
+}
+
+// get a particular or all SMSes
+// R: if no index is passed, we return all SMSes
+SIM800L.getSMS = function(index){
 }
 
 
+// delete a particular or all SMSes
+// R: if no index is passed, we delete all SMSes
+SIM800L.delSMS = function(index){
+}
 
 
 /* -- VOICE --*/
@@ -48,8 +58,7 @@ SIM800L.receiveSMS = function(callback{
 SIM800L.placeCall = function(number, callback){
   at.cmd("ATD"+number+";\r\n", 1000, function(d) {
     if (d===undefined) ; // we timed out!
-    // play audio: call initiated
-    if(callback) callback({type: 'Call', status: 'initiated'});
+    if(callback) callback({type: 'Call', status: 'initiated'}); // ex: play audio "Call initiated"
   });
 }
 
@@ -61,12 +70,12 @@ SIM800L.placeCall = function(number, callback){
 // R: to hangup --> ATH
 SIM800L.receiveCall = function(callback){
   at.registerLine("RING", function(){ 
-    callback({type: 'Call', status: 'ringing'}); } 
+    callback({type: 'Call', status: 'ringing'}); } // ex: play audio "Call received"
   });
 }
-SIM800L.endCall = function(callback){
+SIM800L.callEnded = function(callback){
   at.registerLine("NO CARRIER", function(){ 
-    callback({type: 'Call', status: 'ended'}); } 
+    callback({type: 'Call', status: 'ended'}); } // ex: play audio "Call ended" 
   });
 }
 
@@ -75,8 +84,7 @@ SIM800L.endCall = function(callback){
 SIM800L.hangupCall = function(callback){
   at.cmd("ATH\r\n", 1000, function(d) {
     if (d===undefined) ; // we timed out!
-    // play audio: hangup confirmed
-    if(callback) callback({type: 'Call', status: 'hangup'});
+    if(callback) callback({type: 'Call', status: 'hangup'}); // ex: play audio "Call hangup confirmed"
   });
 }
 
@@ -86,7 +94,6 @@ SIM800L.hangupCall = function(callback){
 SIM800L.rejectCalls = function(mode, callback){
   at.cmd("AT+GSMBUSY="+mode+"\r\n", 1000, function(d) {
     if (d===undefined) ; // we timed out!
-    // play audio: hangup confirmed
     if(callback) callback({type: 'Call', status: 'hangup'});
   });
 }
@@ -97,7 +104,6 @@ SIM800L.rejectCalls = function(mode, callback){
 SIM800L.buzzerRing = function(mode, callback){
   at.cmd("AT+CBUZZERRING="+mode+"\r\n", 1000, function(d) {
     if (d===undefined) ; // we timed out!
-    // play audio: hangup confirmed
     if(callback) callback({type: 'Call', status: 'hangup'});
   });
 }
@@ -108,7 +114,6 @@ SIM800L.buzzerRing = function(mode, callback){
 SIM800L.toggleNetLight = function(mode, callback){
   at.cmd("AT+CNETLIGHT="+mode+"\r\n", 1000, function(d) {
     if (d===undefined) ; // we timed out!
-    // play audio: hangup confirmed
     if(callback) callback({type: 'Call', status: 'hangup'});
   });
 }
@@ -121,7 +126,6 @@ SIM800L.toggleNetLight = function(mode, callback){
 SIM800L.toggleNetLightIndicateGprsStatus = function(mode, callback){
   at.cmd("AT+CSGS="+mode+"\r\n", 1000, function(d) {
     if (d===undefined) ; // we timed out!
-    // play audio: hangup confirmed
     if(callback) callback({type: 'Call', status: 'hangup'});
   });
 }
@@ -132,7 +136,6 @@ SIM800L.toggleNetLightIndicateGprsStatus = function(mode, callback){
 SIM800L.toggleMike = function(mode, callback){
   at.cmd("AT+CEXTERNTONE="+mode+"\r\n", 1000, function(d) {
     if (d===undefined) ; // we timed out!
-    // play audio: hangup confirmed
     if(callback) callback({type: 'Call', status: 'hangup'});
   });
 }
