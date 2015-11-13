@@ -6,6 +6,7 @@ Serial1.setup(115200, { rx: B7, tx : B6 });
 
 var at = require("AT").connect(Serial1);
 at.debug();
+// R: we could connect the NET pin & check whether it's pulsating, HIGH, or LOW to know if we have to reboot the module
 digitalWrite(B4, 0); // power off SIM800L module
 setTimeout(function(){
   digitalWrite(B4, 1);  // power on SIM800L module
@@ -136,3 +137,57 @@ at.cmd("ATH\r\n", 1000, function(d) {
   // d is now the result
   console.log('ATH result: ' + d);
 });
+
+
+
+
+// following is, obviously, not working ;)
+at.cmd("ATI\r\n", 1000, function cb(d) {
+  if (d===undefined) ; // we timed out!
+  // d is now the result
+  console.log('ATI result: ' + d);
+  testStuff += '#'+d;
+  if( still_waiting_for_more_info ) return cb;
+});
+// the below one is, but doesn't do what I expected :/ ..
+at.cmd("ATI\r\n", 1000, function cb(d) {
+  if (d===undefined) ; // we timed out!
+  // d is now the result
+  console.log('ATI result: ' + d);
+  testStuff += '#'+d;
+  //testStuff += '['+ d + ']';
+  if( at.isBusy() ) return cb;
+});
+
+
+at.cmd("ATI\r\n", 1000, function cb(d) {
+  if (d===undefined) ; // we timed out!
+  // d is now the result
+  console.log('FKUK result: \r\n' + d) + 'FLOK';
+  if( at.isBusy() ) return cb;
+});
+
+
+// register a callback for whenever "ATI" pops
+at.registerLine("ATI", function(d) { console.log('regist_ATI START: \r\n' + d + '\r\nEND'); });
+// unregister the above
+at.unregisterLine("ATI");
+
+// other way of fetching stuff
+var testStuff;
+Serial1.on('data', function(d) { USB.write(d); testStuff="#"+d; });
+at.write('ATI\r\n');
+Serial1.removeAllListeners('data');
+Serial1.on('data', function(d) { USB.write(d); }); // 'll print pending stuff*
+
+// if we want, we can handle the pending stuff, by using the following
+Serial1.available() // different than 0 when data is available
+Serial1.read() // read all the buffer content at once & flush it
+
+// testStuff --> "#ATI\r\r\nSIM800 R13.08\r\n\r\nOK\r\n"
+var cleanStuff = testStuff.split('\r\n').join(' ').split('\r').join('#');
+// cleanStuff --> "#ATI# SIM800 R13.08  OK "
+var cmdIssued = cleanStuff.substr(cleanStuff.indexOf('#')+1, cleanStuff.lastIndexOf('#')-1 );
+var cmdResult = cleanStuff.substr(cleanStuff.lastIndexOf('#')+2, cleanStuff.lastIndexOf('  ')-6 );
+// if the below === "OK", we know we can parse the above stuff ( cmdResult.split(' ')[0], .. )
+var cmdRetKod = cleanStuff.substr(cleanStuff.lastIndexOf('  ')+2, cleanStuff.length - cleanStuff.lastIndexOf(' ')+1 );
