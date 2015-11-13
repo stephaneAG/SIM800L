@@ -77,14 +77,14 @@ SIM800L.sendSMS = function(number, message, callback){
       });
     }
   });
-}
+};
 
 // handle receiving a SMS ( when a message is received --> +CMTI: "SM",<n> )
 SIM800L.receiveSMS = function(callback){
   // on [get last] message received
   // pass a function that handles "stuff" when a message is received ( ex: save it to SD card & remove it from SIM )
   if(callback) callback({type: 'SMS', message: message, status: 'received'});  // ex: play audio "SMS received"
-}
+};
 
 // get a particular or all SMSes
 // R: if no index is passed, we return all SMSes
@@ -94,7 +94,7 @@ SIM800L.receiveSMS = function(callback){
 SIM800L.getSMS = function(indexOrFlag){
   // if !isNaN -> index => get SMS[i]
   // else -> flag => getSMS[flag]
-}
+};
 
 
 // delete a particular or all SMSes
@@ -104,7 +104,7 @@ SIM800L.getSMS = function(indexOrFlag){
 SIM800L.delSMS = function(indexOrFlag){
   // if !isNaN -> index => get SMS[i]
   // else -> flag => getSMS[flag]
-}
+};
 
 
 /* -- VOICE --*/
@@ -114,7 +114,7 @@ SIM800L.placeCall = function(number, callback){
     if (d===undefined) ; // we timed out!
     if(callback) callback({type: 'Call', status: 'initiated'}); // ex: play audio "Call initiated"
   });
-}
+};
 
 // handle receiving a call ( when a call is received --> RING )
 // R: if module detects DTMF, URC 'll be reported via serial port --> ATD<the_num>; ==> +DTMF
@@ -124,23 +124,23 @@ SIM800L.placeCall = function(number, callback){
 // R: to hangup --> ATH
 SIM800L.receiveCall = function(callback){
   at.registerLine("RING", function(){ 
-    callback({type: 'Call', status: 'ringing'}); } // ex: play audio "Call received"
+    callback({type: 'Call', status: 'ringing'}); // ex: play audio "Call received"
   });
-}
+};
 
 // handle accepting a call
 SIM800L.acceptCall = function(callback){
   at.registerLine("ATA", function(){ 
-    callback({type: 'Call', status: 'accepted'}); } // ex: play audio "Call accepted"
+    callback({type: 'Call', status: 'accepted'}); // ex: play audio "Call accepted"
   });
-}
+};
 
 // handle call ended
 SIM800L.callEnded = function(callback){
   at.registerLine("NO CARRIER", function(){ 
-    callback({type: 'Call', status: 'ended'}); } // ex: play audio "Call ended" 
+    callback({type: 'Call', status: 'ended'}); // ex: play audio "Call ended" 
   });
-}
+};
 
 
 // handle hanging up
@@ -149,7 +149,7 @@ SIM800L.hangupCall = function(callback){
     if (d===undefined) ; // we timed out!
     if(callback) callback({type: 'Call', status: 'hangup'}); // ex: play audio "Call hangup confirmed"
   });
-}
+};
 
 
 // handle rejecting calls
@@ -159,7 +159,7 @@ SIM800L.rejectCalls = function(mode, callback){
     if (d===undefined) ; // we timed out!
     if(callback) callback({type: 'Call', status: 'hangup'});
   });
-}
+};
 
 
 // handle using or not the buzzer sound for incoming calls
@@ -169,7 +169,7 @@ SIM800L.buzzerRing = function(mode, callback){
     if (d===undefined) ; // we timed out!
     if(callback) callback({type: 'Call', status: 'hangup'});
   });
-}
+};
 
 
 // handle toggling the Net light
@@ -179,7 +179,7 @@ SIM800L.toggleNetLight = function(mode, callback){
     if (d===undefined) ; // we timed out!
     if(callback) callback({type: 'Call', status: 'hangup'});
   });
-}
+};
 
 
 // handle using the Net light to indicate the GPRS status
@@ -191,7 +191,7 @@ SIM800L.toggleNetLightIndicateGprsStatus = function(mode, callback){
     if (d===undefined) ; // we timed out!
     if(callback) callback({type: 'Call', status: 'hangup'});
   });
-}
+};
 
 /* -- GENERAL --*/
 // handle opening or closing the microphone
@@ -201,23 +201,23 @@ SIM800L.toggleMike = function(mode, callback){
     if (d===undefined) ; // we timed out!
     if(callback) callback({type: 'Call', status: 'hangup'});
   });
-}
+};
 
 
 /* -- HELPERS -- */
 // handle resetting the SIM800L module by triggering its RST pin ( R: shorting it to Gnd  )
-SIM800L.reset(callback){
+SIM800L.reset = function(callback){
   digitalWrite(B4, 0); // power off SIM800L module
   setTimeout(function(){
     digitalWrite(B4, 1);  // power on SIM800L module
     SIM800L.init(callback);
   }, 1000);
-}
+};
 
 // does nothing for the moment ;p
 SIM800L.init = function(callback){
   callback(null);
-}
+};
 
 /** This is 'exported' so it can be used with `require('MOD123.js').connect(pin1,pin2)` */
 exports.connect = function (usart, resetPin, connectedCallback) {
