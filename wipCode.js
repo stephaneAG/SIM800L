@@ -30,11 +30,6 @@ SIM800L.sendSMS = function(number, message, callback){
 }
 
 // handle receiving a SMS ( when a message is received --> +CMTI: "SM",<n> )
-// R: get last/<n> message received --> AT+CMGR=1/<n>
-// R: calling the above TWICE marks it as "read" ( hum .. would it be possible that it's copied by fais ? .. )
-// R: get all messages received --> AT+CMGL="ALL"
-// R: delete a message --> AT+CMGD=<n>
-// R: delete all messages --> AT+CMGDA="DEL <chunk> ( chunks: READ,UNREAD,SENT,UNSENT,INBOX,ALL) in text mode
 SIM800L.receiveSMS = function(callback){
   // on [get last] message received
   // pass a function that handles "stuff" when a message is received ( ex: save it to SD card & remove it from SIM )
@@ -43,18 +38,27 @@ SIM800L.receiveSMS = function(callback){
 
 // get a particular or all SMSes
 // R: if no index is passed, we return all SMSes
-SIM800L.getSMS = function(index){
+// R: get last/<n> message received --> AT+CMGR=1/<n>
+// R: calling the above TWICE marks it as "read" ( hum .. would it be possible that it's copied by fais ? .. )
+// R: get all messages received --> AT+CMGL="ALL"
+SIM800L.getSMS = function(indexOrFlag){
+  // if !isNaN -> index => get SMS[i]
+  // else -> flag => getSMS[flag]
 }
 
 
 // delete a particular or all SMSes
 // R: if no index is passed, we delete all SMSes
-SIM800L.delSMS = function(index){
+// R: delete a message --> AT+CMGD=<n>
+// R: delete all messages --> AT+CMGDA="DEL <chunk> ( chunks: READ,UNREAD,SENT,UNSENT,INBOX,ALL) in text mode
+SIM800L.delSMS = function(indexOrFlag){
+  // if !isNaN -> index => get SMS[i]
+  // else -> flag => getSMS[flag]
 }
 
 
 /* -- VOICE --*/
-// handle initiating a call
+// handle initiating a call ( --> ATD )
 SIM800L.placeCall = function(number, callback){
   at.cmd("ATD"+number+";\r\n", 1000, function(d) {
     if (d===undefined) ; // we timed out!
@@ -65,7 +69,7 @@ SIM800L.placeCall = function(number, callback){
 // handle receiving a call ( when a call is received --> RING )
 // R: if module detects DTMF, URC 'll be reported via serial port --> ATD<the_num>; ==> +DTMF
 // R: enable DTMF detection --> AT+DDET=1
-// R: receive incoming call --> ATA
+// R: accept incoming call --> ATA
 // R: when a call is aborted ( on the remote side --> NO CARRIER )
 // R: to hangup --> ATH
 SIM800L.receiveCall = function(callback){
@@ -73,6 +77,15 @@ SIM800L.receiveCall = function(callback){
     callback({type: 'Call', status: 'ringing'}); } // ex: play audio "Call received"
   });
 }
+
+// handle accepting a call
+SIM800L.acceptCall = function(callback){
+  at.registerLine("ATA", function(){ 
+    callback({type: 'Call', status: 'accepted'}); } // ex: play audio "Call accepted"
+  });
+}
+
+// handle call ended
 SIM800L.callEnded = function(callback){
   at.registerLine("NO CARRIER", function(){ 
     callback({type: 'Call', status: 'ended'}); } // ex: play audio "Call ended" 
