@@ -8,8 +8,9 @@ var exports = {};
 var sim800l = exports.connect(Serial1, B4, function(err){
 //var sim800l = require('SIM800L').connect(Serial1, B4, function(err){
   if(!err){
+    /*
     // send a text message
-    sim800l.sendSMS('0681382722', 'I am gonna call you and then hang up !', function(){
+    sim800l.sendSMS('0681382722', 'Shall we play a game ? -> call then hang up ..', function(){
       sim800l.placeCall('0681382722', function(){
         setTimeout(function(){
           sim800l.hangupCall(function(){
@@ -20,7 +21,74 @@ var sim800l = exports.connect(Serial1, B4, function(err){
         },3000);
       });
     });
-    // place a call then hangup
+    */
+    
+    // combo test ;p ==> HAHA! "Uncaught Error: Maximum number of scopes exceeded" ==> but the 15000 timeout seems to overcome that ?
+    // it SEEMS to, but for a real life implm, we souhld REALLY wait for OK AT confirmations ( -> ex: to have the right order of actions )
+    // in others words, register 'OK' & on callback, deregister it & trigger some timeout or other fcn ;P
+    /*
+    sim800l.sendSMS('0681382722', 'Shall we play a game ? -> call then hang up ..', function(){
+      console.log('first SMS sent ..');
+      setTimeout(function(){
+        sim800l.placeCall('0681382722', function(){
+          console.log('placign call ..');
+          setTimeout(function(){
+            sim800l.sendSMS('0681382722', '.. I will hang up soon ..',function(){
+              console.log('.. second SMS sent ..');
+              setTimeout(function(){
+                sim800l.hangupCall(function(){
+                  console.log('.. hanging up call :D !');
+                  setTimeout(function(){
+                    sim800l.sendSMS('0681382722', 'Did it ring your bell ?',function(data){
+                      console.log('.. third & last SMS sent :P !');
+                      console.log(data.type, data.message, data.status);
+                    });
+                  },5000);
+                });
+              },25000);
+            });
+          },5000);
+        });
+      },5000);
+    });
+    */
+    // combo test, with many less logs ;p ==> NOT working, but nice test indeed ^^ .. so yup, 'd need refactoring .. but who use that anw ?
+    /*
+    sim800l.sendSMS('0681382722', 'Shall we play a game ? -> call then hang up ..', setTimeout(
+      sim800l.placeCall('0681382722', setTimeout(
+        sim800l.sendSMS('0681382722', '.. I will hang up soon ..', setTimeout(
+          sim800l.hangupCall(setTimeout(
+            sim800l.sendSMS('0681382722', 'Did it ring your bell ?',function(data){
+              console.log(data.type, data.message, data.status);
+            })
+          , 5000) )
+        ),5000)
+      ),5000)
+    , 5000) );
+    */
+    
+    // simple one: send a SMS
+    //sim800l.sendSMS('0681382722', 'Shall we play a game ? -> call then hang up ..', function(){ console.log('first SMS sent ..'); });
+    
+    // simple two: call & then hangup
+    sim800l.placeCall('0681382722', function(){
+      console.log('placing call ..');
+      setTimeout(function(){
+        sim800l.hangupCall(function(){
+          console.log('.. hanging up call :D !');
+          setTimeout(function(){
+            sim800l.sendSMS('0681382722', 'Did it ring your bell ?',function(data){
+              console.log('.. third & last SMS sent :P !');
+              console.log(data.type, data.message, data.status);
+            });
+          },5000);
+        });
+      },15000);
+    });
+    
+    // simple three: handle receiving SMS
+    
+    
   } else {
     console.log(err);
   }
@@ -53,10 +121,13 @@ SIM800L.sendSMS = function(number, message, callback){
 
 
 // handle receiving a SMS ( when a message is received --> +CMTI: "SM",<n> )
+// example usage:
+// on [get last] message received
+// pass a function that handles "stuff" when a message is received ( ex: save it to SD card & remove it from SIM )
 SIM800L.receiveSMS = function(callback){
-  // on [get last] message received
-  // pass a function that handles "stuff" when a message is received ( ex: save it to SD card & remove it from SIM )
-  if(callback) callback({type: 'SMS', message: message, status: 'received'});  // ex: play audio "SMS received"
+  at.registerLine('+CMTI: "SM"', function(){ 
+    callback({type: 'SMS', message: 'TODO:getMessageAsJsObjOrJson', status: 'received'});  // ex: play audio "SMS received"
+  });
 };
 
 // get a particular or all SMSes
