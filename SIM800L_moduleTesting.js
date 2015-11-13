@@ -99,6 +99,7 @@ var sim800l = exports.connect(Serial1, B4, function(err){
 /* -- ACTUAL MODULE -- */
 
 var at;
+var usart;
 var SIM800L = {};
 /* -- TEXT -- */
 // handle sending a SMS
@@ -135,9 +136,18 @@ SIM800L.receiveSMS = function(callback){
 // R: get last/<n> message received --> AT+CMGR=1/<n>
 // R: calling the above TWICE marks it as "read" ( hum .. would it be possible that it's copied by fais ? .. )
 // R: get all messages received --> AT+CMGL="ALL"
-SIM800L.getSMS = function(indexOrFlag){
+SIM800L.getSMS = function(indexOrFlag, callback){
   // if !isNaN -> index => get SMS[i]
   // else -> flag => getSMS[flag]
+  // for now, don't care of the above distinction -- R: below NOT working .. :/
+  at.register('+CMGR=1', function(){
+    at.write('AT+CMGR=1\r\n');
+    setTimeout(function(){
+      var data = usart.read();
+      at.unregister('+CMGR=1');
+      callback({type: 'SMS', message: data, status: 'received'});
+    }, 1000);
+  });
 };
 
 
@@ -247,6 +257,35 @@ SIM800L.toggleMike = function(mode, callback){
   });
 };
 
+// get module name & version ( --> ATI )
+SIM800L.moduleAndVersion = function(callback){
+  
+};
+
+// turn on verbose errors ( --> ATI+CMEE=2 )
+SIM800L.verbose = function(callback){
+  
+};
+
+// get SIM card number ( --> AT+CCID )
+SIM800L.SIM = function(callback){
+  
+};
+
+// get connected network ( --> AT+COPS? )
+SIM800L.network = function(callback){
+  
+};
+
+// get signal strength ( --> AT+CSQ )
+SIM800L.signalStrength = function(callback){
+  
+};
+
+// get battery state ( --> AT+CBC )
+SIM800L.batteryState = function(callback){
+  
+};
 
 /* -- HELPERS -- */
 // handle resetting the SIM800L module by triggering its RST pin ( R: shorting it to Gnd  )
@@ -265,6 +304,7 @@ SIM800L.init = function(callback){
 
 /** This is 'exported' so it can be used with `require('MOD123.js').connect(pin1,pin2)` */
 exports.connect = function (usart, resetPin, connectedCallback) {
+  usart = usart;
   at = require('AT').connect(usart);
   return SIM800L;
 };
