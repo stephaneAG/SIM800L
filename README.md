@@ -47,6 +47,7 @@ For the Espruino ( uC with an onboard javascript interpreter ), the following li
 [wipCode API](https://github.com/stephaneAG/SIM800L/blob/master/wipCode.md)  
 [wipCode JS](https://github.com/stephaneAG/SIM800L/blob/master/wipCode.js)  
 [SIM800L_moduleTesting.js](https://github.com/stephaneAG/SIM800L/blob/master/SIM800L_moduleTesting.js)  
+To load the wip module code in the Espruino Web IDE ==> <a href="http://www.espruino.com/webide?codeurl=https://raw.githubusercontent.com/stephaneAG/SIM800L/master/SIM800L_moduleTesting.js" class="codelink" title="Send to Web IDE"> <img src="http://www.espruino.com/favicon.ico"></a>  
 #### SMS
 send SMS ( ```AT+CMGS="<the_number>"``` ):
 ```javascript
