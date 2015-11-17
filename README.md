@@ -56,26 +56,90 @@ For the Espruino ( uC with an onboard javascript interpreter ), the following li
 
 
 ## useful AT cmds
-- init the auto-bauder: ```AT```
-- get module name & version: ```ATI```
-- turn on verbose errors: ```ATI+CMEE=2```
-- get SIM card number: ```AT+CCID```
-- check that we're connected to a network: ```AT+COPS?```
-- check signal strength: ```AT+CSQ```
-- check battery state: ```AT+CBC```
-- check the codepages supported by the module (IRA,GSM,UCS2,HEX,PCCP,PCDN,8859-1): ```AT+CSCS=?```
-- for locked SIM cards, to enter PIN before connecting to a network: ```AT+PIN=<pin_code>```
-- send a SMS: 
-  * set the module to TEXT mode ( not PDU/data ) to be able to enter a message: ```AT+CMGF=1```
-  * send a text message ( 'll return a '>' prompt, type/send Ctrl-Z on an empty line to send ): ```AT+CMGS="<the_number>"```
-- send a unicode SMS (if the codepages list contains HEX or UCS2 ):
-  * set the module to HEX or UCS2 mode to be able to enter a unicode message: ```AT+CSCS="HEX"```
+init the auto-bauder:  
+```javascript
+AT
+```
+
+get module name & version:  
+```javascript
+ATI
+```
+
+turn on verbose errors:  
+```javascript
+ATI+CMEE=2
+```
+
+get SIM card number:  
+```javascript
+AT+CCID
+```
+
+check that we're connected to a network:  
+```javascript
+AT+COPS?
+```
+
+check signal strength:  
+```javascript
+AT+CSQ
+```
+
+check battery state:  
+```javascript
+AT+CBC
+```
+
+check the codepages supported by the module (IRA,GSM,UCS2,HEX,PCCP,PCDN,8859-1):  
+```javascript
+AT+CSCS=?
+```
+
+for locked SIM cards, to enter PIN before connecting to a network:  
+```javascript
+AT+PIN=<pin_code>
+```
+
+send a SMS:  
+  * set the module to TEXT mode ( not PDU/data ) to be able to enter a message:  
+    ```javascript
+    AT+CMGF=1
+    ```
+    
+  * send a text message ( 'll return a '>' prompt, type/send Ctrl-Z on an empty line to send ):  
+    ```javascript
+    AT+CMGS="<the_number>"
+    ```
+    
+send a unicode SMS (if the codepages list contains HEX or UCS2 ):  
+  * set the module to HEX or UCS2 mode to be able to enter a unicode message:  
+    ```javascript
+    AT+CSCS="HEX"
+    ```
+    
   * specify the correct DCS ( Data Coding Scheme ) for Unicode messages ( 0X08 ):  
     R: check ```<cmd>=?```, current values ```<cmd>?```, set ```<cmd>=..```  
-    We have to change the last parameter of ```AT+CSMP?``` ( ```17,168,0,0``` ) to 8:
-    ```AT+CSMP=17,168,0,8```  
-  * send unicode message ( 'll return a '>' prompt, type/send Ctrl-Z on an empty line to send ): ```AT+CMGS="<the_number>"```  
-  * now, we just have to write some code to convert a unicode glyph to a hex string  ( echo -e "\xEF\xA3\xBF" )
-- place a call:
-  * to init a call: ```ATD<the_number>;```
-  * once chatting, to hang up: ```ATH```
+    We have to change the last parameter of ```AT+CSMP?``` ( ```17,168,0,0``` ) to 8:  
+    ```javascript
+    AT+CSMP=17,168,0,8
+    ```
+    
+  * send unicode message ( 'll return a '>' prompt, type/send Ctrl-Z on an empty line to send ):  
+    ```javascript
+    AT+CMGS="<the_number>"
+    ```
+    
+  * now, we just have to write some code to convert a unicode glyph to a hex string  ( echo -e "\xEF\xA3\xBF" )  
+  
+
+place a call:
+  * to init a call:  
+    ```javascript
+    ATD<the_number>;
+    ```
+    
+  * once chatting, to hang up:  
+    ```javascript
+    ATH
+    ```
