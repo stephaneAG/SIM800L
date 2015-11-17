@@ -1,20 +1,8 @@
 # SIM800L
-Little repo containing code &amp; docs for the SIM800L module
-
-#### API-like helpers [ in other words, wannabe-module code .. ;p ]
-[wipCode API](https://github.com/stephaneAG/SIM800L/blob/master/wipCode.md)  
-[wipCode JS](https://github.com/stephaneAG/SIM800L/blob/master/wipCode.js)  
-#### WIP MODULE [ "ouiiiiip" ;) ]
-[SIM800L_moduleTesting.js](https://github.com/stephaneAG/SIM800L/blob/master/SIM800L_moduleTesting.js)
-
+Code & doc for the SIM800L module
 
 <img src="http://stephaneadamgarnier.com/SIM800L/SIM800L_pinouts.jpg" width="100%">
-<img src="http://stephaneadamgarnier.com/SIM800L/SIM800L_connections.jpg" width="100%">
-
-Essential downloads, thanks to the Adafruit friends :)  
-[SIM800L Downloads](https://learn.adafruit.com/adafruit-fona-mini-gsm-gprs-cellular-phone-module/downloads)  
-[AT commands](http://www.adafruit.com/datasheets/sim800_series_at_command_manual_v1.01.pdf)  
-[FTP/HTTP](http://www.adafruit.com/datasheets/sim800_series_ip_application_note_v1.00.pdf)
+<img src="http://stephaneadamgarnier.com/SIM800L/SIM800L_connections.jpg" width="100%">  
 
 Quick reminder: if debug comm is impossible using ```screen /dev/ttyUSB0 115200```, then try shorting the RST pin to Gnd
 If the output looks like the following, it may be cause the module is under-running ( aka doesn't get enough power )
@@ -36,7 +24,7 @@ To solve that, power the module from +5V  instead of +3.3V, & just use a 1N4007 
 For the ```OVER-VOLTAGE WARNNING```, I don't know yet why it sometimes happen, but it seems it's when the module is up for a long time ( or maybe my diode is free runnig ? :/ )
 
 ## using it with a laptop
-Any script/program 'll do, starting with the following cmd, whcih 'll start an interactive session using "screen"
+Any script/program 'll do, starting with the following cmd, which 'll start an interactive session using "screen"  
 ```screen /dev/ttyUSB0 115200```
 
 ## using it with a uC
@@ -55,7 +43,136 @@ For the Espruino ( uC with an onboard javascript interpreter ), the following li
 [USART](http://www.espruino.com/USART)
 
 
+## Espruino SIM800L module API
+[wipCode API](https://github.com/stephaneAG/SIM800L/blob/master/wipCode.md)  
+[wipCode JS](https://github.com/stephaneAG/SIM800L/blob/master/wipCode.js)  
+[SIM800L_moduleTesting.js](https://github.com/stephaneAG/SIM800L/blob/master/SIM800L_moduleTesting.js)  
+#### SMS
+send SMS ( ```AT+CMGS="<the_number>"``` ):
+```javascript
+SIM800L.sendSMS(number, message, callback)
+```
+
+send unicode SMS ( ```AT+CMGS="<the_number>"``` ):
+```javascript
+SIM800L.sendUnicodeSMS(number, message, callback)
+```
+
+receive SMS ( ``` +CMTI: "SM",<total>``` ):
+```javascript
+SIM800L.receiveSMS(callback)
+```
+
+get one/all SMS ( ```AT+CMGR=<index>```, ```AT+CMGL="ALL"```):
+```javascript
+SIM800L.getSMS(indexOrFlag)
+```
+
+delete all/one SMS ( ```AT+CMGD=<index>```, ```AT+CMGDA="DEL ALL"``` ):
+```javascript
+SIM800L.delSMS(indexOrFlag)
+```
+
+#### Calls
+initiate calls ( ```ATD<number>;``` ):
+```javascript
+SIM800L.placeCall(number, callback)
+```
+
+receive calls ( ```RING``` ):
+```javascript
+SIM800L.receiveCall(callback)
+```
+
+accept calls ( ```ATA``` ):
+```javascript
+SIM800L.acceptCall(callback)
+```
+
+know if call ended ( ```NO CARRIER``` ):
+```javascript
+SIM800L.callEnded(callback)
+```
+
+hangup call ( ```ATH``` ):
+```javascript
+SIM800L.hangupCall(callback)
+```
+
+reject calls ( ```AT+GSMBUSY``` ):
+```javascript
+SIM800L.rejectCalls(mode, callback)
+```
+
+use or not buzzer sound for incoming calls ( ```AT+CBUZZERRING``` ):
+```javascript
+SIM800L.buzzerRing(mode, callback)
+```
+
+#### General
+toggle Net LED ( ```AT+CNETLIGHT``` ):
+```javascript
+SIM800L.toggleNetLight(mode, callback)
+```
+
+toggle using the Net LED as GPRS status indicator ( ```AT+CSGS``` ):
+```javascript
+SIM800L.toggleNetLightIndicateGprsStatus(mode, callback)
+```
+
+toggle opening or closing the mike ( ```AT+CEXTERNTONE``` ):
+```javascript
+SIM800L.toggleMike(mode, callback)
+```
+
+get module name & version ( ```ATI``` ):
+```javascript
+SIM800L.nameVersion(callback)
+```
+
+turn on verbose errors ( ```ATI+CMEE=2``` ):
+```javascript
+SIM800L.verboseErrors(callback)
+```
+
+get SIM card number ( ```AT+CCID``` ):
+```javascript
+SIM800L.simNum(callback)
+```
+
+check network connection ( ```AT+COPS?``` ):
+```javascript
+SIM800L.connStat(callback)
+```
+
+check signal strength ( ```AT+CSQ``` ):
+```javascript
+SIM800L.sigPow(callback)
+```
+
+check battery state ( ```AT+CBC``` ):
+```javascript
+SIM800L.battPow(callback)
+```
+
+check the codepages supported by the module, for ex IRA,GSM,UCS2,HEX,PCCP,PCDN,8859-1..: ( ```AT+CSCS=?``` ):
+```javascript
+SIM800L.codePages(callback)
+```
+
+for locked SIM cards, to enter PIN before connecting to a network ( ```AT+PIN=<pin_code>``` ):
+```javascript
+SIM800L.unlockPin(callback)
+```
+
+
 ## useful AT cmds
+
+Essential downloads, thanks to the Adafruit friends :)  
+[SIM800L Downloads](https://learn.adafruit.com/adafruit-fona-mini-gsm-gprs-cellular-phone-module/downloads)  
+[AT commands](http://www.adafruit.com/datasheets/sim800_series_at_command_manual_v1.01.pdf)  
+[FTP/HTTP](http://www.adafruit.com/datasheets/sim800_series_ip_application_note_v1.00.pdf)  
+
 init the auto-bauder:  
 ```javascript
 AT
