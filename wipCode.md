@@ -1,4 +1,4 @@
-## API-like functions to be later used to build a SIM800L module
+## SIM800L module API
 
 #### SMS
 send SMS ( ```AT+CMGS="<the_number>"``` ):
