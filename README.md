@@ -301,7 +301,7 @@ send a unicode SMS (if the codepages list contains HEX or UCS2 ):
     ```
     
   * now, we just have to write some code to convert a unicode glyph to a hex string  ( echo -e "\xEF\xA3\xBF" )  
-  
+    R: the following seems to ne quite handy :) [smssplit](http://chadselph.github.io/smssplit/)  
 
 place a call:
   * to init a call:  
