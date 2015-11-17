@@ -1,9 +1,14 @@
 ## API-like functions to be later used to build a SIM800L module
 
 #### SMS
-send SMS ( ```AT+CMGF=1``` ):
+send SMS ( ```AT+CMGS="<the_number>"``` ):
 ```javascript
 SIM800L.sendSMS(number, message, callback)
+```
+
+send unicode SMS ( ```AT+CMGS="<the_number>"``` ):
+```javascript
+SIM800L.sendUnicodeSMS(number, message, callback)
 ```
 
 receive SMS ( ``` +CMTI: "SM",<total>``` ):
@@ -72,3 +77,44 @@ toggle opening or closing the mike ( ```AT+CEXTERNTONE``` ):
 ```javascript
 SIM800L.toggleMike(mode, callback)
 ```
+
+get module name & version ( ```ATI``` ):
+```javascript
+SIM800L.nameVersion(callback)
+```
+
+turn on verbose errors ( ```ATI+CMEE=2``` ):
+```javascript
+SIM800L.verboseErrors(callback)
+```
+
+get SIM card number ( ```AT+CCID``` ):
+```javascript
+SIM800L.simNum(callback)
+```
+
+check network connection ( ```AT+COPS?``` ):
+```javascript
+SIM800L.connStat(callback)
+```
+
+check signal strength ( ```AT+CSQ``` ):
+```javascript
+SIM800L.sigPow(callback)
+```
+
+check battery state ( ```AT+CBC``` ):
+```javascript
+SIM800L.battPow(callback)
+```
+
+check the codepages supported by the module, for ex IRA,GSM,UCS2,HEX,PCCP,PCDN,8859-1..: ( ```AT+CSCS=?``` ):
+```javascript
+SIM800L.codePages(callback)
+```
+
+for locked SIM cards, to enter PIN before connecting to a network ( ```AT+PIN=<pin_code>``` ):
+```javascript
+SIM800L.unlockPin(callback)
+```
+
