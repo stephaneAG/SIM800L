@@ -48,6 +48,58 @@ For the Espruino ( uC with an onboard javascript interpreter ), the following li
 [wipCode JS](https://github.com/stephaneAG/SIM800L/blob/master/wipCode.js)  
 [SIM800L_moduleTesting.js](https://github.com/stephaneAG/SIM800L/blob/master/SIM800L_moduleTesting.js)  
 To load the wip module code in the Espruino Web IDE ==> <a href="http://www.espruino.com/webide?codeurl=https://raw.githubusercontent.com/stephaneAG/SIM800L/master/SIM800L_moduleTesting.js" class="codelink" title="Send to Web IDE"> <img src="http://www.espruino.com/favicon.ico"></a>  
+
+#### Examples
+the bare minimum is the following:  
+```javascript
+var sim800l = require('SIM800L').connect(Serial1, B4, function(err){
+  if(!err){
+    // some code here
+  } else {
+    console.log(err);
+  }
+});
+```
+
+to send a SMS:
+```javascript
+// ( .. )
+sim800l.sendSMS('<phone_number>', 'Shall we play a game ?', function(){
+  console.log('SMS sent !');
+});
+// ( .. )
+```
+
+to place a call:
+```javascript
+// ( .. )
+sim800l.placeCall('<phone_number>', function(){
+  console.log('placing call ..');
+});
+// ( .. )
+```
+
+to place a call, hangup after a while, and then send a SMS:
+```javascript
+// ( .. )
+sim800l.placeCall('<phone_number>', function(){
+      console.log('placing call ..');
+      setTimeout(function(){
+        sim800l.hangupCall(function(){
+          console.log('.. hanging up call :D !');
+          setTimeout(function(){
+            sim800l.sendSMS('<phone_number>', 'Did it ring your bell ?',function(data){
+              console.log('.. third & last SMS sent :P !');
+              console.log(data.type, data.message, data.status);
+            });
+          },5000);
+        });
+      },15000);
+    });
+// ( .. )
+```
+
+
 #### SMS
 send SMS ( ```AT+CMGS="<the_number>"``` ):
 ```javascript
