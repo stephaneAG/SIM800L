@@ -1,8 +1,42 @@
 # SIM800L
 Code & doc for the SIM800L module
 
+## hardware specs
+- Quad band GSM/GPRS module
+- Supply voltage: 3.4-4.4V
+- Interface: USART 2.8V
+
+The module require a maximum 4.4V on Vcc from a "strong" power source.Manufacturer states that consumption can be up to 2A  ( in peaks ).  
+Can be used with any USB-TTL module & a laptop or any uC.  
+While most of the sellers claim it to be 5V tolerant ( & it seems to be ), the hardware design manual, however, defines the maximum voltage of the HIGH level to be 2.8V.To follow the designg manual guidelines, we can use a simple resistor voltage divider.  
+
+## connections & pinouts
+
 <img src="http://stephaneadamgarnier.com/SIM800L/SIM800L_pinouts.jpg" width="100%">
 <img src="http://stephaneadamgarnier.com/SIM800L/SIM800L_connections.jpg" width="100%">  
+
+## warnings & errors
+Depending on the implementation of the SIM800L module in a circuit, it can throw errors as unsollicited messages on the Tx line, or just not work correctly.  
+Aside from throwing errors, the blinking pattern of the Net light can help identifying the status of the module & possible troubles.  
+
+The module software monitors the suply voltage constantly, & may throw the following errors/warnings:
+- if Vcc voltage is <= 3.5V:  
+  ```javascript
+  UNDER-VOLTAGE WARNING
+  ```
+- if Vcc voltage is <= 3.4V:  
+  ```javascript
+  UNDER-VOLTAGE POWER DOWN
+  ```
+- if Vcc voltage is >= 4.3V:  
+  ```javascript
+  OVER-VOLTAGE WARNING
+  ```
+- if Vcc voltage is >= 4.4V:  
+  ```javascript
+  OVER-VOLTAGE POWER DOWN
+  ```
+
 
 Quick reminder: if debug comm is impossible using ```screen /dev/ttyUSB0 115200```, then try shorting the RST pin to Gnd
 If the output looks like the following, it may be cause the module is under-running ( aka doesn't get enough power )
