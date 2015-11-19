@@ -1,18 +1,5 @@
 <?xml version="1.0"?>
 <svg class="defs-only" xmlns="http://www.w3.org/2000/svg" width="50" height="25">
-    <linearGradient id="coin" x2="50%" y2="40%" spreadMethod="reflect">
-        <stop stop-color="gold" offset="30%" />
-        <stop stop-color="goldenrod" offset="70%" />
-        <stop stop-color="white" offset="82%" />
-        <stop stop-color="gold" offset="92%" />
-        <stop stop-color="darkgoldenrod" offset="100%" />
-    </linearGradient>
-    <radialGradient id="pot" fx="30%" fy="35%">
-        <stop stop-color="white" offset="0%" />
-        <stop stop-color="gold" offset="15%" />
-        <stop stop-color="goldenrod" offset="80%" />
-        <stop stop-color="darkgoldenrod" offset="100%" />
-    </radialGradient>
     <symbol id="potofgold" >
         <g fill="url(#coin)" stroke="darkgoldenrod" stroke-width="0.5">
             <circle r="5" transform="translate(30,7)" />
@@ -36,5 +23,4 @@
                  Q 5,27 5,35 C5,45 15,50 30,50Z"
           />
     </symbol>
-    <use xlink:href="#potofgold"/>
 </svg>
