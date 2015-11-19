@@ -10,6 +10,8 @@ The module require a maximum 4.4V on Vcc from a "strong" power source.Manufactur
 Can be used with any USB-TTL module & a laptop or any uC.  
 While most of the sellers claim it to be 5V tolerant ( & it seems to be ), the hardware design manual, however, defines the maximum voltage of the HIGH level to be 2.8V.To follow the designg manual guidelines, we can use a simple resistor voltage divider.  
 
+<img src="https://cdn.rawgit.com/stephaneAG/SIM800L/master/resistor_voltage_divier.svg" width="100%">
+
 ## connections & pinouts
 
 <img src="http://stephaneadamgarnier.com/SIM800L/SIM800L_pinouts.jpg" width="100%">
