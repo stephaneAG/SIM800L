@@ -21,22 +21,23 @@ Aside from throwing errors, the blinking pattern of the Net light can help ident
 
 The module software monitors the suply voltage constantly, & may throw the following errors/warnings:
 - if Vcc voltage is <= 3.5V:  
-  ```javascript
+  ```
   UNDER-VOLTAGE WARNING
   ```
 - if Vcc voltage is <= 3.4V:  
-  ```javascript
+  ```
   UNDER-VOLTAGE POWER DOWN
   ```
 - if Vcc voltage is >= 4.3V:  
-  ```javascript
+  ```
   OVER-VOLTAGE WARNING
   ```
 - if Vcc voltage is >= 4.4V:  
-  ```javascript
+  ```
   OVER-VOLTAGE POWER DOWN
   ```
 
+R: the above infos may differ depending on the module ( the one in the picture is said to need 3.7-4.2V for Vcc )
 
 Quick reminder: if debug comm is impossible using ```screen /dev/ttyUSB0 115200```, then try shorting the RST pin to Gnd
 If the output looks like the following, it may be cause the module is under-running ( aka doesn't get enough power )
@@ -53,9 +54,7 @@ U0: 0000 0001 [0000]
 T0: 0000 00C3
 Boot failed, reset ...
 ```
-To solve that, power the module from +5V  instead of +3.3V, & just use a 1N4007 diode ( 0.7 drop ) to be "right" for the [3.7V..4.2V] accepted range for the module input voltage
-
-For the ```OVER-VOLTAGE WARNNING```, I don't know yet why it sometimes happen, but it seems it's when the module is up for a long time ( or maybe my diode is free runnig ? :/ )
+To solve that, power the module from +5V  instead of +3.3V, & just use a 1N4007 diode ( 0.7 drop ) to be in the accepted range for the module input voltage.
 
 ## using it with a laptop
 Any script/program 'll do, starting with the following cmd, which 'll start an interactive session using "screen"  
