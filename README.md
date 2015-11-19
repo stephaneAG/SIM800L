@@ -6,7 +6,7 @@ Code & doc for the SIM800L module
 - Supply voltage: 3.4-4.4V
 - Interface: USART 2.8V
 
-The module require a maximum 4.4V on Vcc from a "strong" power source.Manufacturer states that consumption can be up to 2A  ( in peaks ).  
+The module requires a maximum 4.4V on Vcc from a "strong" power source.Manufacturer states that consumption can be up to 2A  ( in peaks ).  
 With a 5V power supply, we can either use a 1N4007 diode, for example ( it has a 0.7V drop ), or use a simple resistor voltage divider:  
 
 <img src="https://cdn.rawgit.com/stephaneAG/SIM800L/master/resistor_voltage_divider__power.svg" width="100%" height="300">
