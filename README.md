@@ -7,10 +7,14 @@ Code & doc for the SIM800L module
 - Interface: USART 2.8V
 
 The module require a maximum 4.4V on Vcc from a "strong" power source.Manufacturer states that consumption can be up to 2A  ( in peaks ).  
-Can be used with any USB-TTL module & a laptop or any uC.  
-While most of the sellers claim it to be 5V tolerant ( & it seems to be ), the hardware design manual, however, defines the maximum voltage of the HIGH level to be 2.8V.To follow the designg manual guidelines, we can use a simple resistor voltage divider.  
+With a 5V power supply, we can either use a 1N4007 diode, for example ( it has a 0.7V drop ), or use a simple resistor voltage divider:  
 
-<img src="https://cdn.rawgit.com/stephaneAG/SIM800L/master/resistor_voltage_divider.svg" width="100%" height="300">
+<img src="https://cdn.rawgit.com/stephaneAG/SIM800L/master/resistor_voltage_divider__power.svg" width="100%" height="300">
+
+It can be used with any USB-TTL module & a laptop or any uC.  
+While most of the sellers claim it to be 5V tolerant ( & it seems to be ), the hardware design manual, however, defines the maximum voltage of the HIGH level to be 2.8V.To follow the designg manual guidelines, we can use another resistor voltage divider:  
+
+<img src="https://cdn.rawgit.com/stephaneAG/SIM800L/master/resistor_voltage_divider__rx.svg" width="100%" height="300">
 
 ## connections & pinouts
 
