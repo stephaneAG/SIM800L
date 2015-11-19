@@ -1,4 +1,3 @@
-<h1>Non-Scaling SVG</h1>
 <svg class="defs-only" xmlns="http://www.w3.org/2000/svg">
     <linearGradient id="coin" x2="50%" y2="40%" spreadMethod="reflect">
         <stop stop-color="gold" offset="30%" />
