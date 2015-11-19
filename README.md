@@ -16,7 +16,17 @@ While most of the sellers claim it to be 5V tolerant ( & it seems to be ), the h
 
 <img src="https://cdn.rawgit.com/stephaneAG/SIM800L/master/resistor_voltage_divider__rx.svg" width="100%" height="300">
 
+Aside info, both 1.8V & 3.0V SIM cards are said to be compatible
+
 ## connections & pinouts
+
+Espruino Pico  | SIM800L        | Notes
+-------------- | ---------------| ------------------------------
++5V            | Vcc ( 4.4V ! ) | Power supply input
+B6 / USART1 Tx | Rx  ( 2.8V ! ) | Serial data Espruino -> SIM800L
+B7 / USART1 Rx | Tx             | Serial data SIM800L -> Espruino
+B4             | RST            | Reset pin
+Gnd            | Gnd            |
 
 <img src="http://stephaneadamgarnier.com/SIM800L/SIM800L_pinouts.jpg" width="100%">
 <img src="http://stephaneadamgarnier.com/SIM800L/SIM800L_connections.jpg" width="100%">  
