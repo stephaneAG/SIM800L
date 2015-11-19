@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+<svg viewBox="0 0 100% 100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" height="100%" width="100%">
+<g transform=" scale(2.7184365615160386,2.7184365615160386) translate(66.17878652636905,102.55054297413803)">
+    <g>
+        <g id="id_150cdd3414a-0-5679f3c4-3c97-4605-bc8d-fc8cf5a56b0f_0"/>
+    </g>
+    <g>
+        <g id="id_150cdd3414a-0-5679f3c4-3c97-4605-bc8d-fc8cf5a56b0f_1">
+            <g id="id_150cdd4600c-22-fdcef1b5-cf51-450a-999e-f7d54566b485_1" transform="translate(129.90436105476672,15.614858012170375) rotate(90) scale(1,1)" stroke="">
+                <g>
+                    <g>
+                        <g id="g7402" transform="translate(-629.55695,-128.76803)">
+                            <rect height="30" id="rect8575" style="fill:#ffffff;stroke:#000000;stroke-width:2" width="10" x="624.55695" y="113.76803"/>
+                            <line id="line8577" style="fill:#ffffff;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-opacity:1" x1="629.55695" x2="629.55695" y1="113.76803" y2="98.768028"/>
+                            <line id="line8579" style="fill:#ffffff;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-opacity:1" x1="629.55695" x2="629.55695" y1="143.76804" y2="158.76804"/>
+                        </g>
+                    </g>
+                </g>
+                <g transform="translate(0,30) rotate(90)">
+                    <g opacity="0">
+                        <rect x="-2.5" y="-2.5" width="5" height="5" fill="red" stroke="black" stroke-width="2"/>
+                    </g>
+                    <g class="tools"/>
+                </g>
+                <g transform="translate(0,-30) rotate(270)">
+                    <g opacity="0">
+                        <rect x="-2.5" y="-2.5" width="5" height="5" fill="red" stroke="black" stroke-width="2"/>
+                    </g>
+                    <g class="tools"/>
+                </g>
+            </g>
+            <g id="id_150cdd4600c-22-fdcef1b5-cf51-450a-999e-f7d54566b485_1" transform="translate(129.90436105476672,15.614858012170375)" stroke="">
+                <g style="text-anchor: middle;font-family: verdana; font-size : 10px;" transform="translate(0.000003814697265625,-22.078125)">
+                    <text x="0" y="0">
+                        <tspan>R</tspan>
+                        <tspan dy="3" font-size="8px">1</tspan>
+                        <tspan id="cc_R1" class="cc_field" x="0" dy="12">0&#x2126;</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="id_150cdd4f73a-29-1b032c87-9c77-4da2-8b3b-b58c6ca25636_1" transform="translate(53.70436105476671,-45.99011156186613) rotate(90) scale(1,1)" stroke="">
+                <g>
+                    <g>
+                        <circle cx="0" cy="0" r="2.5" stroke="none" stroke-width="1" fill="white" opacity="0"/>
+                        <line x1="0" x2="15" y1="0" y2="0" stroke="black"/>
+                    </g>
+                </g>
+                <g transform="translate(15,0) rotate(0)">
+                    <g opacity="0">
+                        <rect x="-2.5" y="-2.5" width="5" height="5" fill="red" stroke="black" stroke-width="2"/>
+                    </g>
+                    <g class="tools"/>
+                </g>
+            </g>
+            <g id="id_150cdd4f73a-29-1b032c87-9c77-4da2-8b3b-b58c6ca25636_1" transform="translate(53.70436105476671,-45.99011156186613)" stroke="">
+                <g style="text-anchor: middle;font-family: verdana; font-size : 10px;" transform="translate(0,-4.578125)">
+                    <text x="0" y="0">
+                        <tspan id="cc_Vin" class="cc_field">Vin</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="id_150cdd7eb7d-32-dc3bdfa4-ffed-4415-a22e-acc584bf0090_1" transform="translate(206.10436105476674,-45.99011156186613) rotate(90) scale(1,1)" stroke="">
+                <g>
+                    <g>
+                        <circle cx="0" cy="0" r="2.5" stroke="none" stroke-width="1" fill="white" opacity="0"/>
+                        <line x1="0" x2="15" y1="0" y2="0" stroke="black"/>
+                    </g>
+                </g>
+                <g transform="translate(15,0) rotate(0)">
+                    <g opacity="0">
+                        <rect x="-2.5" y="-2.5" width="5" height="5" fill="red" stroke="black" stroke-width="2"/>
+                    </g>
+                    <g class="tools"/>
+                </g>
+            </g>
+            <g id="id_150cdd7eb7d-32-dc3bdfa4-ffed-4415-a22e-acc584bf0090_1" transform="translate(206.10436105476674,-45.99011156186613)" stroke="">
+                <g style="text-anchor: middle;font-family: verdana; font-size : 10px;" transform="translate(0,-4.578125)">
+                    <text x="0" y="0">
+                        <tspan id="cc_Vout" class="cc_field">Vout</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="id_150cdd87539-41-9130e933-00de-4b5f-aa3d-292d975ab237_1" transform="translate(282.30436105476673,15.614858012170375) rotate(90) scale(1,1)" stroke="">
+                <g>
+                    <g>
+                        <g id="g7402" transform="translate(-629.55695,-128.76803)">
+                            <rect height="30" id="rect8575" style="fill:#ffffff;stroke:#000000;stroke-width:2" width="10" x="624.55695" y="113.76803"/>
+                            <line id="line8577" style="fill:#ffffff;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-opacity:1" x1="629.55695" x2="629.55695" y1="113.76803" y2="98.768028"/>
+                            <line id="line8579" style="fill:#ffffff;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-opacity:1" x1="629.55695" x2="629.55695" y1="143.76804" y2="158.76804"/>
+                        </g>
+                    </g>
+                </g>
+                <g transform="translate(0,30) rotate(90)">
+                    <g opacity="0">
+                        <rect x="-2.5" y="-2.5" width="5" height="5" fill="red" stroke="black" stroke-width="2"/>
+                    </g>
+                    <g class="tools"/>
+                </g>
+                <g transform="translate(0,-30) rotate(270)">
+                    <g opacity="0">
+                        <rect x="-2.5" y="-2.5" width="5" height="5" fill="red" stroke="black" stroke-width="2"/>
+                    </g>
+                    <g class="tools"/>
+                </g>
+            </g>
+            <g id="id_150cdd87539-41-9130e933-00de-4b5f-aa3d-292d975ab237_1" transform="translate(282.30436105476673,15.614858012170375)" stroke="">
+                <g style="text-anchor: middle;font-family: verdana; font-size : 10px;" transform="translate(0.000003814697265625,-22.078125)">
+                    <text x="0" y="0">
+                        <tspan>R</tspan>
+                        <tspan dy="3" font-size="8px">2</tspan>
+                        <tspan id="cc_R2" class="cc_field" x="0" dy="12">0&#x2126;</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="id_150cdd9b81f-4a-f98f8e2c-35b5-4845-9ae6-7b882239fb2e_1" transform="translate(358.50436105476666,106.40988843813386) rotate(0) scale(1,1)" stroke="">
+                <g>
+                    <g>
+                        <g id="g7928" transform="translate(-312.45596,-389.11557)">
+                            <path d="m 321.04342,391.42478 -17.17488,0" id="path8589" style="fill:#000000;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"/>
+                            <path d="m 317.75219,394.37316 -10.59242,0" id="path8591" style="fill:#000000;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"/>
+                            <path d="m 314.68795,397.32156 -4.46394,0" id="path8593" style="fill:#000000;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"/>
+                            <path d="m 312.45598,380.40951 0,11.01527" id="path8595" style="fill:#000000;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4"/>
+                        </g>
+                    </g>
+                </g>
+                <g transform="translate(0.0000200000000063,-8.70606) rotate(270)">
+                    <g opacity="0">
+                        <rect x="-2.5" y="-2.5" width="5" height="5" fill="red" stroke="black" stroke-width="2"/>
+                    </g>
+                    <g class="tools"/>
+                </g>
+            </g>
+            <g id="id_150cdd9b81f-4a-f98f8e2c-35b5-4845-9ae6-7b882239fb2e_1" transform="translate(358.50436105476666,106.40988843813386)" stroke=""/>
+        </g>
+    </g>
+    <g>
+        <g id="id_150cdd3414a-0-5679f3c4-3c97-4605-bc8d-fc8cf5a56b0f_2"/>
+        <g>
+            <g stroke-width="1">
+                <line x1="53.70436105476671" y1="-30.99011156186613" x2="53.70436105476671" y2="15.614858012170377" fill="blue" stroke="black" stroke-linecap="round"/>
+                <line x1="53.70436105476671" y1="15.614858012170377" x2="99.90436105476672" y2="15.614858012170377" fill="blue" stroke="black" stroke-linecap="round"/>
+            </g>
+        </g>
+        <g>
+            <g stroke-width="1">
+                <line x1="206.10436105476674" y1="-30.99011156186613" x2="206.10436105476674" y2="15.614858012170377" fill="blue" stroke="black" stroke-linecap="round"/>
+                <line x1="159.90436105476672" y1="15.614858012170373" x2="206.10436105476674" y2="15.614858012170373" fill="blue" stroke="black" stroke-linecap="round"/>
+                <line x1="206.10436105476674" y1="15.614858012170377" x2="252.30436105476673" y2="15.614858012170377" fill="blue" stroke="black" stroke-linecap="round"/>
+                <circle cx="206.10436105476674" cy="15.614858012170373" r="2" fill="black"/>
+            </g>
+        </g>
+        <g>
+            <g stroke-width="1">
+                <line x1="358.50438105476667" y1="15.614858012170373" x2="358.50438105476667" y2="97.70382843813385" fill="blue" stroke="black" stroke-linecap="round"/>
+                <line x1="312.30436105476673" y1="15.614858012170373" x2="358.50438105476667" y2="15.614858012170373" fill="blue" stroke="black" stroke-linecap="round"/>
+            </g>
+        </g>
+    </g>
+    <g/>
+    <g>
+        <g id="id_150cdd3414a-0-5679f3c4-3c97-4605-bc8d-fc8cf5a56b0f_4"/>
+    </g>
+    <g>
+        <g id="id_150cdd3414a-0-5679f3c4-3c97-4605-bc8d-fc8cf5a56b0f_5"/>
+        <g>
+            <g opacity="0">
+                <line x1="53.70436105476671" y1="-30.99011156186613" x2="53.70436105476671" y2="15.614858012170377" fill="blue" stroke="red" stroke-width="3" stroke-linecap="round"/>
+                <line x1="53.70436105476671" y1="15.614858012170377" x2="99.90436105476672" y2="15.614858012170377" fill="blue" stroke="red" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <g>
+                <line x1="53.70436105476671" y1="-30.99011156186613" x2="53.70436105476671" y2="15.614858012170377" fill="blue" stroke="black" stroke-width="10" opacity="0" stroke-linecap="round"/>
+                <line x1="53.70436105476671" y1="15.614858012170377" x2="99.90436105476672" y2="15.614858012170377" fill="blue" stroke="black" stroke-width="10" opacity="0" stroke-linecap="round"/>
+            </g>
+        </g>
+        <g>
+            <g opacity="0">
+                <line x1="206.10436105476674" y1="-30.99011156186613" x2="206.10436105476674" y2="15.614858012170377" fill="blue" stroke="red" stroke-width="3" stroke-linecap="round"/>
+                <line x1="159.90436105476672" y1="15.614858012170373" x2="206.10436105476674" y2="15.614858012170373" fill="blue" stroke="red" stroke-width="3" stroke-linecap="round"/>
+                <line x1="206.10436105476674" y1="15.614858012170377" x2="252.30436105476673" y2="15.614858012170377" fill="blue" stroke="red" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <g>
+                <line x1="206.10436105476674" y1="-30.99011156186613" x2="206.10436105476674" y2="15.614858012170377" fill="blue" stroke="black" stroke-width="10" opacity="0" stroke-linecap="round"/>
+                <line x1="159.90436105476672" y1="15.614858012170373" x2="206.10436105476674" y2="15.614858012170373" fill="blue" stroke="black" stroke-width="10" opacity="0" stroke-linecap="round"/>
+                <line x1="206.10436105476674" y1="15.614858012170377" x2="252.30436105476673" y2="15.614858012170377" fill="blue" stroke="black" stroke-width="10" opacity="0" stroke-linecap="round"/>
+            </g>
+        </g>
+        <g>
+            <g opacity="0">
+                <line x1="358.50438105476667" y1="15.614858012170373" x2="358.50438105476667" y2="97.70382843813385" fill="blue" stroke="red" stroke-width="3" stroke-linecap="round"/>
+                <line x1="312.30436105476673" y1="15.614858012170373" x2="358.50438105476667" y2="15.614858012170373" fill="blue" stroke="red" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <g>
+                <line x1="358.50438105476667" y1="15.614858012170373" x2="358.50438105476667" y2="97.70382843813385" fill="blue" stroke="black" stroke-width="10" opacity="0" stroke-linecap="round"/>
+                <line x1="312.30436105476673" y1="15.614858012170373" x2="358.50438105476667" y2="15.614858012170373" fill="blue" stroke="black" stroke-width="10" opacity="0" stroke-linecap="round"/>
+            </g>
+        </g>
+    </g>
+    <g>
+        <g id="id_150cdd3414a-0-5679f3c4-3c97-4605-bc8d-fc8cf5a56b0f_6">
+            <g id="id_150cdd4600c-22-fdcef1b5-cf51-450a-999e-f7d54566b485_6" transform="translate(129.90436105476672,15.614858012170375) rotate(90) scale(1,1)" stroke="">
+                <rect x="-5" y="-30.00000762939453" width="10" height="60.00000762939453" fill="blue" stroke="none" opacity="0"/>
+                <g transform="translate(0,30) rotate(90)">
+                    <rect x="-5" y="-5" width="15" height="15" fill="#ff0000" fill-opacity="0" stroke="none"/>
+                    <g/>
+                </g>
+                <g transform="translate(0,-30) rotate(270)">
+                    <rect x="-5" y="-5" width="15" height="15" fill="#ff0000" fill-opacity="0" stroke="none"/>
+                    <g/>
+                </g>
+            </g>
+            <g id="id_150cdd4f73a-29-1b032c87-9c77-4da2-8b3b-b58c6ca25636_6" transform="translate(53.70436105476671,-45.99011156186613) rotate(90) scale(1,1)" stroke="">
+                <rect x="-2.5" y="-2.5" width="17.5" height="5" fill="blue" stroke="none" opacity="0"/>
+                <g transform="translate(15,0) rotate(0)">
+                    <rect x="-5" y="-5" width="15" height="15" fill="#ff0000" fill-opacity="0" stroke="none"/>
+                    <g/>
+                </g>
+            </g>
+            <g id="id_150cdd7eb7d-32-dc3bdfa4-ffed-4415-a22e-acc584bf0090_6" transform="translate(206.10436105476674,-45.99011156186613) rotate(90) scale(1,1)" stroke="">
+                <rect x="-2.5" y="-2.5" width="17.5" height="5" fill="blue" stroke="none" opacity="0"/>
+                <g transform="translate(15,0) rotate(0)">
+                    <rect x="-5" y="-5" width="15" height="15" fill="#ff0000" fill-opacity="0" stroke="none"/>
+                    <g/>
+                </g>
+            </g>
+            <g id="id_150cdd87539-41-9130e933-00de-4b5f-aa3d-292d975ab237_6" transform="translate(282.30436105476673,15.614858012170375) rotate(90) scale(1,1)" stroke="">
+                <rect x="-5" y="-30.00000762939453" width="10" height="60.00000762939453" fill="blue" stroke="none" opacity="0"/>
+                <g transform="translate(0,30) rotate(90)">
+                    <rect x="-5" y="-5" width="15" height="15" fill="#ff0000" fill-opacity="0" stroke="none"/>
+                    <g/>
+                </g>
+                <g transform="translate(0,-30) rotate(270)">
+                    <rect x="-5" y="-5" width="15" height="15" fill="#ff0000" fill-opacity="0" stroke="none"/>
+                    <g/>
+                </g>
+            </g>
+            <g id="id_150cdd9b81f-4a-f98f8e2c-35b5-4845-9ae6-7b882239fb2e_6" transform="translate(358.50436105476666,106.40988843813386) rotate(0) scale(1,1)" stroke="">
+                <rect x="-8.58740234375" y="-8.7060546875" width="17.17486572265625" height="16.91204833984375" fill="blue" stroke="none" opacity="0"/>
+                <g transform="translate(0.0000200000000063,-8.70606) rotate(270)">
+                    <rect x="-5" y="-5" width="15" height="15" fill="#ff0000" fill-opacity="0" stroke="none"/>
+                    <g/>
+                </g>
+            </g>
+        </g>
+    </g>
+    <g>
+        <g id="id_150cdd3414a-0-5679f3c4-3c97-4605-bc8d-fc8cf5a56b0f_7"/>
+    </g>
+    <g/>
+</g>
+</svg>
