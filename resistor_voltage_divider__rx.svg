@@ -34,7 +34,7 @@
                     <text x="0" y="0">
                         <tspan>R</tspan>
                         <tspan dy="3" font-size="8px">1</tspan>
-                        <tspan id="cc_R1" class="cc_field" x="0" dy="12">15K&#x2126;</tspan>
+                        <tspan id="cc_R1" class="cc_field" x="0" dy="12">16k&#x2126;</tspan>
                     </text>
                 </g>
             </g>
@@ -76,7 +76,7 @@
             <g id="id_150cdd7eb7d-32-dc3bdfa4-ffed-4415-a22e-acc584bf0090_1" transform="translate(206.10436105476674,-45.99011156186613)" stroke="">
                 <g style="text-anchor: middle;font-family: verdana; font-size : 10px;" transform="translate(0,-4.578125)">
                     <text x="0" y="0">
-                        <tspan id="cc_Vout" class="cc_field">2.8V</tspan>
+                        <tspan id="cc_Vout" class="cc_field">~2.8V ( 2.78V ) </tspan>
                     </text>
                 </g>
             </g>
@@ -108,7 +108,7 @@
                     <text x="0" y="0">
                         <tspan>R</tspan>
                         <tspan dy="3" font-size="8px">2</tspan>
-                        <tspan id="cc_R2" class="cc_field" x="0" dy="12">10K&#x2126;</tspan>
+                        <tspan id="cc_R2" class="cc_field" x="0" dy="12">20k&#x2126;</tspan>
                     </text>
                 </g>
             </g>
