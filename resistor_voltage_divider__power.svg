@@ -34,7 +34,7 @@
                     <text x="0" y="0">
                         <tspan>R</tspan>
                         <tspan dy="3" font-size="8px">1</tspan>
-                        <tspan id="cc_R1" class="cc_field" x="0" dy="12">5K&#x2126;</tspan>
+                        <tspan id="cc_R1" class="cc_field" x="0" dy="12">3k&#x2126;</tspan>
                     </text>
                 </g>
             </g>
@@ -108,7 +108,7 @@
                     <text x="0" y="0">
                         <tspan>R</tspan>
                         <tspan dy="3" font-size="8px">2</tspan>
-                        <tspan id="cc_R2" class="cc_field" x="0" dy="12">20K&#x2126;</tspan>
+                        <tspan id="cc_R2" class="cc_field" x="0" dy="12">22k&#x2126;</tspan>
                     </text>
                 </g>
             </g>
