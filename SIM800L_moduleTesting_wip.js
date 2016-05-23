@@ -150,6 +150,26 @@ SIM800L.getSMS = function(indexOrFlag, callback){
   });
 };
 
+// ------------------------------------------ WIP STUFF STR ------------------------------------------
+// R: since the above is not working, the below replacement fcn has to be tested
+SIM800L.getSMSWip = function(indexOrFlag, callback){
+  // if !isNaN -> index => get SMS[i]
+  // else -> flag => getSMS[flag]
+  // for now, don't care of the above distinction -- R: below NOT working .. :/
+  var data = ''; // SMS content buffer
+  at.cmd("AT+CMGR=1\r\n", 1000, function cb(d) {
+    if (d===undefined) ; // we timed out!
+    if (d!== 'OK') { data += d; return cb; } // we received part of a SMS
+    if (d==='OK') { // we received the entire SMS
+      // parse 'data' if necessary ( ex: format a nice obj with sender number & content, .. ), then callback passing that
+      if(callback) callback({type: 'SMS', message: data, status: 'received'});
+    }
+  });
+};
+
+
+
+// ------------------------------------------ WIP STUFF END ------------------------------------------
 
 // delete a particular or all SMSes
 // R: if no index is passed, we delete all SMSes
