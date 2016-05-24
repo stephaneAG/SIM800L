@@ -1,3 +1,5 @@
+R: as of the 24/05/2016 update, the wip code is in 'SIM800L_moduleTesting_wip.js'
+
 # SIM800L
 Code & doc for the SIM800L module
 
